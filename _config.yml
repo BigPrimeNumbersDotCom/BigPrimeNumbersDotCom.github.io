@@ -9,7 +9,6 @@ shorturl:         bigprimenumbers.com
 
 author:
   name:           'Michael Phelan'
-  url:            https://twitter.com/joshualande
   email:          phelan.map@gmail.com
 
 # Custom vars
@@ -17,3 +16,6 @@ version:          1.0.0
 
 github:
   repo:           github.com/bigprimenumbersdotcom/bigprimenumbersdotcom.github.io
+
+gems:
+  - jekyll-redirect-from
