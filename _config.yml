@@ -2,7 +2,7 @@
 
 # Setup
 title:            Big Prime Numbers
-tagline:          'Portfolio, Blogging, Coding, Design, Development'
+tagline:          'Blogging, Coding, Design, Development'
 url:              http://www.bigprimenumbers.com
 shorturl:         bigprimenumbers.com
 
@@ -13,6 +13,9 @@ author:
 
 # Custom vars
 version:          1.0.0
+
+sass:
+  sass_dir: _scss
 
 github:
   repo:           github.com/bigprimenumbersdotcom/bigprimenumbersdotcom.github.io
