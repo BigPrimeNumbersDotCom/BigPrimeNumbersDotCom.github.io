@@ -1,4 +1,6 @@
 
+destination: public
+source: src
 
 # Setup
 title:            Big Prime Numbers
@@ -19,6 +21,8 @@ sass:
 
 github:
   repo:           github.com/bigprimenumbersdotcom/bigprimenumbersdotcom.github.io
+
+exclude: ["node_modules"]
 
 gems:
   - jekyll-redirect-from
