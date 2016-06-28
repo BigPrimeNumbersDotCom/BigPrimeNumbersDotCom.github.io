@@ -3,7 +3,7 @@
 module.exports = {
   entry: "./webpack/entry.js",
   output: {
-    path:"./src/assets/js/"
+    path:"./src/assets/js/",
     filename:"bundle.js"
   },
   module:{
