@@ -1,7 +1,8 @@
 'use strict'
+var webpack = require('webpack');
 
 module.exports = {
-  entry: "./webpack/entry.js",
+  entry: "./src-react/entry.js",
   output: {
     path:"./src/assets/js/",
     filename:"bundle.js"
@@ -14,6 +15,8 @@ module.exports = {
         loader:"babel"
       }
     ]
-  }
-
+  },
+  plugins:[
+    // new webpack.optimize.UglifyJsPlugin()
+  ]
 }

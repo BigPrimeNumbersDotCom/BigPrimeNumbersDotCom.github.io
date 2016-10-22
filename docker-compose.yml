@@ -1,0 +1,17 @@
+#
+# Github site
+#
+version: '2'
+services:
+  github_blog:
+    # image: jekyll/jekyll
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # command: jekyll serve --watch
+    environment:
+      NODE_ENV: development
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/srv/jekyll

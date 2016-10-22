@@ -1,0 +1,16 @@
+@mixin _type($size,$weight,$color,$lineHeight){
+  font-size: $size;
+  line-height: $lineHeight;
+  color: $color;
+  weight: $weight;
+}
+
+@mixin generate-type-roboto($size,$weight,$color,$lineHeight) {
+  font-family: Robot, sans-serif;
+  @include _type($size,$weight,$color,$lineHeight);
+}
+
+@mixin generate-type-lato($size,$weight,$color,$lineHeight) {
+  font-family: Lato, sans-serif;
+  @include _type($size,$weight,$color,$lineHeight);
+}
