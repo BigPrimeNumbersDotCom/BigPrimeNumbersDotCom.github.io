@@ -27564,6 +27564,25 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var title = _react2.default.createElement(
+	        'div',
+	        { style: _styles2.default.logo, className: 'bpn-logo' },
+	        _react2.default.createElement(
+	          'div',
+	          { style: _styles2.default.logoType, className: 'bpn-logo--block' },
+	          'Big'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: _styles2.default.logoTypeAlt, className: 'bpn-logo--lite' },
+	          'Prime'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: _styles2.default.logoType, className: 'bpn-logo--block' },
+	          'Numbers'
+	        )
+	      );
 	      return _react2.default.createElement(
 	        'div',
 	        { style: _styles2.default.layout, className: 'bpn-layout' },
@@ -27571,7 +27590,7 @@
 	          'div',
 	          { style: _styles2.default.drawer, className: 'bpn-layout__drawer' },
 	          _react2.default.createElement(_menu2.default, {
-	            title: 'Big Prime Numbers',
+	            title: title,
 	            items: [{ label: 'Work', link: '/work' }, { label: 'Projects', link: '/projects' }, { label: 'Blog', link: '/blog' }]
 	          })
 	        ),
@@ -27682,7 +27701,7 @@
 	          { style: _styles2.default.drawerLogo, className: 'bpn-menu__logo' },
 	          _react2.default.createElement(
 	            _reactRouter.Link,
-	            { to: '/' },
+	            { style: _styles2.default.link, to: '/' },
 	            title
 	          )
 	        ),
@@ -27703,7 +27722,8 @@
 	              );
 	            })
 	          )
-	        )
+	        ),
+	        _react2.default.createElement('div', { style: _styles2.default.filler })
 	      );
 	    }
 	  }]);
@@ -27731,18 +27751,22 @@
 	    justifyContent: 'center'
 	  },
 	  drawerLogo: {
-	    height: '118px',
-	    marginTop: '-120px',
-	    display: 'none'
-	  },
-	  drawerMenu: {
 	    display: 'flex',
 	    flexDirection: 'column',
-	    justifyContent: 'center'
+	    justifyContent: 'center',
+	    flex: 1
+	  },
+	  link: {
+	    textDecoration: 'none'
+	  },
+	  drawerMenu: {
+	    flex: 1
+	  },
+	  filler: {
+	    flex: 2
 	  },
 	  nav: {},
 	  navItem: {
-	    // width:'180px',
 	    height: '40px'
 	  },
 	  navLink: {
@@ -27752,7 +27776,7 @@
 	  navButton: {
 	    cursor: 'pointer',
 	    border: 0,
-	    padding: '8px 0 8px 30px',
+	    padding: '8px 0 8px 20px',
 	    textAlign: 'left',
 	    lineHeight: '24px',
 	    fontSize: '20px',
@@ -27783,16 +27807,39 @@
 	    height: '100%'
 	  },
 	  drawer: {
-	    width: '130px',
+	    width: '140px',
 	    position: 'absolute',
 	    zIndex: '100',
 	    height: '100%',
-	    // padding: '10px',
 	    boxSizing: 'border-box'
 	  },
 	  content: {
 	    flex: 1,
-	    paddingLeft: '130px'
+	    paddingLeft: '140px'
+	  },
+	  logo: {
+	    width: 100,
+	    margin: '0 auto'
+	  },
+	  logoType: {
+	    fontSize: 24,
+	    lineHeight: '26px',
+	    letterSpacing: -2,
+	    fontWeight: 600,
+	    fontFamily: 'Roboto',
+	    color: '#888888',
+	    textTransform: 'uppercase',
+	    margin: '-5px 0 -6px'
+	  },
+	  logoTypeAlt: {
+	    fontSize: 24,
+	    lineHeight: '26px',
+	    letterSpacing: -2,
+	    fontWeight: 300,
+	    fontFamily: 'Lato',
+	    color: '#888888',
+	    textTransform: 'uppercase',
+	    margin: '0 -1px'
 	  }
 	};
 

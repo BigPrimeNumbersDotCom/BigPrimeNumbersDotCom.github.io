@@ -13,11 +13,18 @@ class Layout extends Component {
   }
 
   render(){
+    let title = (
+      <div style={styles.logo} className="bpn-logo">
+        <div style={styles.logoType} className="bpn-logo--block">Big</div>
+        <div style={styles.logoTypeAlt}  className="bpn-logo--lite">Prime</div>
+        <div style={styles.logoType}  className="bpn-logo--block">Numbers</div>
+      </div>
+    )
     return(
       <div style={styles.layout} className="bpn-layout">
         <div style={styles.drawer} className="bpn-layout__drawer">
           <Menu
-            title="Big Prime Numbers"
+            title={title}
             items={
               [
                {label: 'Work', link: '/work' },

@@ -5,17 +5,39 @@ const styles = {
     height: '100%',
   },
   drawer: {
-    width: '130px',
+    width: '140px',
     position: 'absolute',
     zIndex: '100',
     height: '100%',
-    // padding: '10px',
     boxSizing: 'border-box',
-    // background:'rgba(216,216,216,0.2)',
   },
   content: {
     flex: 1,
-    paddingLeft: '130px',
+    paddingLeft: '140px',
+  },
+  logo: {
+    width: 100,
+    margin: '0 auto',
+  },
+  logoType:{
+    fontSize:24,
+    lineHeight:'26px',
+    letterSpacing:-2,
+    fontWeight:600,
+    fontFamily:'Roboto',
+    color:'#888888',
+    textTransform: 'uppercase',
+    margin: '-5px 0 -6px',
+  },
+  logoTypeAlt:{
+    fontSize:24,
+    lineHeight:'26px',
+    letterSpacing:-2,
+    fontWeight:300,
+    fontFamily:'Lato',
+    color:'#888888',
+    textTransform: 'uppercase',
+    margin:'0 -1px',
   }
 };
 

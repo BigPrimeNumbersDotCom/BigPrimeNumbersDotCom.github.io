@@ -36,7 +36,7 @@ class Menu extends Component {
       <div style={styles.drawer} className="bpn-menu">
         <div style={styles.drawerLogo} className="bpn-menu__logo">
         {/* TODO make image or special node  */}
-          <Link to="/">{title}</Link>
+          <Link style={styles.link} to="/">{title}</Link>
         </div>
         <div style={styles.drawerMenu} className="bpn-menu__nav">
         {/* TODO: nav to js file move to   */}
@@ -53,6 +53,7 @@ class Menu extends Component {
             }
           </nav>
         </div>
+        <div style={styles.filler}></div>
       </div>
     )
   }

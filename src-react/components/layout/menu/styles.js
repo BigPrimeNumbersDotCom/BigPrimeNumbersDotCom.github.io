@@ -7,20 +7,24 @@ const styles = {
     justifyContent: 'center',
   },
   drawerLogo:{
-    height: '118px',
-    marginTop: '-120px',
-    display:'none',
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    flex:1,
+  },
+  link:{
+    textDecoration:'none',
   },
   drawerMenu:{
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flex:1,
+  },
+  filler:{
+    flex: 2,
   },
   nav:{
 
   },
   navItem: {
-    // width:'180px',
     height:'40px',
   },
   navLink: {
@@ -30,7 +34,7 @@ const styles = {
   navButton:{
     cursor: 'pointer',
     border: 0,
-    padding: '8px 0 8px 30px',
+    padding: '8px 0 8px 20px',
     textAlign:'left',
     lineHeight: '24px',
     fontSize: '20px',
