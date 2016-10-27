@@ -7,7 +7,6 @@ const styles = {
   },
   content:{
     alignSelf:'center',
-
   },
   wrapper: {
     width:'675px',
@@ -34,7 +33,7 @@ const styles = {
     letterSpacing: '-0.02em',
     fontWeight:300,
     color: '#888888',
-    fontFamily:'Roboto',
+    fontFamily:'Lato',
     padding: 0,
     margin: 0,
     textAlign: 'center'

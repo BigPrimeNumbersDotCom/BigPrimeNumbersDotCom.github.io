@@ -66,6 +66,9 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// require('es6-promise').polyfill();
+	// require('isomorphic-fetch');
+
 	var App = function (_Component) {
 	  _inherits(App, _Component);
 
@@ -21519,19 +21522,19 @@
 
 	var _work2 = _interopRequireDefault(_work);
 
-	var _projects = __webpack_require__(243);
+	var _projects = __webpack_require__(244);
 
 	var _projects2 = _interopRequireDefault(_projects);
 
-	var _project = __webpack_require__(244);
+	var _project = __webpack_require__(245);
 
 	var _project2 = _interopRequireDefault(_project);
 
-	var _blog = __webpack_require__(245);
+	var _blog = __webpack_require__(246);
 
 	var _blog2 = _interopRequireDefault(_blog);
 
-	var _story = __webpack_require__(246);
+	var _story = __webpack_require__(247);
 
 	var _story2 = _interopRequireDefault(_story);
 
@@ -27596,7 +27599,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { style: _styles2.default.content, className: 'bpn-content' },
+	          { style: _styles2.default.content, className: 'bpn-layout__content' },
 	          this.props.children
 	        )
 	      );
@@ -27656,13 +27659,10 @@
 
 	      return _react2.default.createElement(
 	        _reactRouter.Link,
-	        { style: _styles2.default.navLink, to: link },
-	        _react2.default.createElement(
-	          'button',
-	          { style: _styles2.default.navButton,
-	            className: 'bpn-nav__button' },
-	          label
-	        )
+	        { className: 'bpn-nav__link',
+	          style: _styles2.default.navLink,
+	          to: link },
+	        label
 	      );
 	    }
 	  }]);
@@ -27767,25 +27767,27 @@
 	  },
 	  nav: {},
 	  navItem: {
-	    height: '40px'
+	    maxHeight: '40px'
 	  },
 	  navLink: {
-	    padding: '8px 0',
-	    fontSize: '21px'
-	  },
-	  navButton: {
+	    // padding: '8px 0',
+	    // fontSize:'21px',
 	    cursor: 'pointer',
 	    border: 0,
-	    padding: '8px 0 8px 20px',
+	    // padding: '8px 0 8px 20px',
 	    textAlign: 'left',
 	    lineHeight: '24px',
 	    fontSize: '20px',
 	    background: 'none',
-	    width: '100%',
+	    // width: '100%',
 	    fontFamily: 'Roboto',
 	    letterSpacing: -0.43,
 	    fontWeight: 300,
-	    color: '#888888'
+	    color: '#888888',
+	    textDecoration: 'none',
+	    display: 'block',
+	    padding: '8px 20px'
+
 	  }
 	};
 
@@ -27900,7 +27902,7 @@
 	            'div',
 	            { style: _styles2.default.wrapper, className: 'bpn-splash__wrapper' },
 	            _react2.default.createElement(
-	              'div',
+	              'h1',
 	              {
 	                style: _styles2.default.title,
 	                className: 'bpn-type__display-4' },
@@ -27948,7 +27950,6 @@
 	  },
 	  content: {
 	    alignSelf: 'center'
-
 	  },
 	  wrapper: {
 	    width: '675px'
@@ -27975,7 +27976,7 @@
 	    letterSpacing: '-0.02em',
 	    fontWeight: 300,
 	    color: '#888888',
-	    fontFamily: 'Roboto',
+	    fontFamily: 'Lato',
 	    padding: 0,
 	    margin: 0,
 	    textAlign: 'center'
@@ -28000,6 +28001,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _styles = __webpack_require__(243);
+
+	var _styles2 = _interopRequireDefault(_styles);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28008,8 +28013,60 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Work = function (_Component) {
-	  _inherits(Work, _Component);
+	var Button = function (_Component) {
+	  _inherits(Button, _Component);
+
+	  function Button() {
+	    _classCallCheck(this, Button);
+
+	    return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+	  }
+
+	  _createClass(Button, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var label = _props.label;
+	      var onClick = _props.onClick;
+
+	      return _react2.default.createElement(
+	        'button',
+	        { style: _styles2.default.button, onClick: onClick, className: 'bpn-button--outline' },
+	        label
+	      );
+	    }
+	  }]);
+
+	  return Button;
+	}(_react.Component);
+
+	var Title = function (_Component2) {
+	  _inherits(Title, _Component2);
+
+	  function Title() {
+	    _classCallCheck(this, Title);
+
+	    return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
+	  }
+
+	  _createClass(Title, [{
+	    key: 'render',
+	    value: function render() {
+	      var title = this.props.title;
+
+	      return _react2.default.createElement(
+	        'h2',
+	        { style: _styles2.default.h2, className: 'bpn-title' },
+	        title
+	      );
+	    }
+	  }]);
+
+	  return Title;
+	}(_react.Component);
+
+	var Work = function (_Component3) {
+	  _inherits(Work, _Component3);
 
 	  function Work() {
 	    _classCallCheck(this, Work);
@@ -28022,8 +28079,135 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        'Work'
+	        { style: _styles2.default.section.container, className: 'bpn-section' },
+	        _react2.default.createElement(
+	          'div',
+	          { style: _styles2.default.section.title, className: 'bpn-section__title' },
+	          _react2.default.createElement(Title, { title: 'Man, Developer, Innovator' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: _styles2.default.section.content, className: 'bpn-section__content bpn-work' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-work__col bpn-work__col-main' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'bpn-work__section bpn-me' },
+	              _react2.default.createElement(
+	                'h3',
+	                { className: 'bpn-work__section-title' },
+	                'Me'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'bpn-work__section-content' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'bpn-work__section-paragraph' },
+	                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'bpn-work__section bpn-career' },
+	              _react2.default.createElement(
+	                'h3',
+	                { className: 'bpn-work__section-title' },
+	                'Career'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'bpn-work__section-content' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'bpn-work__section-group' },
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'bpn-work__section-header' },
+	                    'Career History Title'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'bpn-work__section-paragraph' },
+	                    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'bpn-work__section-group' },
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'bpn-work__section-header' },
+	                    'Career History Title'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'bpn-work__section-paragraph' },
+	                    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'bpn-work__section-content' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'bpn-work__section-paragraph bpn-work__section-paragraph--no-header' },
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  'Download CV'
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-work__col bpn-work__col-sub' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'bpn-work__section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'bpn-work__section-content' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'bpn-work__section-header' },
+	                  'Skills'
+	                ),
+	                _react2.default.createElement('div', { className: 'bpn-work__skills-map' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'bpn-work__section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'bpn-work__section-content' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'bpn-work__section-header' },
+	                  'Vision'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'bpn-work__section-paragraph' },
+	                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: _styles2.default.fixed.topRight, className: 'bpn-section__button' },
+	          _react2.default.createElement(Button, { label: 'Connect', onClick: function onClick() {
+	              console.log('button clicked');
+	            } })
+	        )
 	      );
 	    }
 	  }]);
@@ -28035,6 +28219,65 @@
 
 /***/ },
 /* 243 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var styles = {
+	  section: {
+	    container: {
+	      display: 'flex',
+	      flexDirection: 'column',
+	      height: '100%',
+	      boxSizing: 'border-box'
+	    },
+	    content: {
+	      flex: 1,
+	      display: 'flex',
+	      padding: '20px'
+	    },
+	    title: {
+	      height: '66px',
+	      padding: '20px'
+	    }
+	  },
+	  h2: {
+	    fontSize: '52px',
+	    lineHeight: '66px',
+	    letterSpacing: '-2px',
+	    fontWeight: 500,
+	    fontFamily: 'Roboto',
+	    color: '#888888',
+	    margin: 0
+	  },
+	  button: {
+	    maxHeight: '40px',
+	    border: '1px solid #979797',
+	    padding: '9px 9px',
+	    fontFamily: 'Roboto',
+	    fontWeight: 200,
+	    fontSize: 18,
+	    lineHeight: '22px',
+	    textAlight: 'center',
+	    color: '#888888',
+	    background: 'none'
+	  },
+	  fixed: {
+	    topRight: {
+	      position: 'fixed',
+	      top: 33,
+	      right: 20
+	    }
+	  }
+	};
+
+	exports.default = styles;
+
+/***/ },
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28083,7 +28326,7 @@
 	exports.default = Projects;
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28132,7 +28375,7 @@
 	exports.default = Project;
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28181,7 +28424,7 @@
 	exports.default = Blog;
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

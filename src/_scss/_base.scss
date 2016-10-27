@@ -1,11 +1,3 @@
 @import "variables";
-@import "page";
-
-html,
-body,
-.root {
-  height:100%;
-  width:100%;
-  padding:0;
-  margin:0;
-}
+@import "component.root";
+@import "page.work";

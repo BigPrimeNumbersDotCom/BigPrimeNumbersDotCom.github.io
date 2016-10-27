@@ -25,26 +25,42 @@ const styles = {
 
   },
   navItem: {
-    height:'40px',
+    maxHeight:'40px',
   },
   navLink: {
-    padding: '8px 0',
-    fontSize:'21px',
-  },
-  navButton:{
+    // padding: '8px 0',
+    // fontSize:'21px',
     cursor: 'pointer',
     border: 0,
-    padding: '8px 0 8px 20px',
+    // padding: '8px 0 8px 20px',
     textAlign:'left',
     lineHeight: '24px',
     fontSize: '20px',
     background: 'none',
-    width: '100%',
+    // width: '100%',
     fontFamily:'Roboto',
     letterSpacing:-0.43,
     fontWeight: 300,
     color:'#888888',
-  }
+    textDecoration:'none',
+    display: 'block',
+    padding:'8px 20px',
+
+  },
+  // navButton:{
+  //   cursor: 'pointer',
+  //   border: 0,
+  //   padding: '8px 0 8px 20px',
+  //   textAlign:'left',
+  //   lineHeight: '24px',
+  //   fontSize: '20px',
+  //   background: 'none',
+  //   width: '100%',
+  //   fontFamily:'Roboto',
+  //   letterSpacing:-0.43,
+  //   fontWeight: 300,
+  //   color:'#888888',
+  // }
 };
 
 export default styles;

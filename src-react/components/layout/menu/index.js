@@ -11,10 +11,9 @@ class MenuItem extends Component{
   render(){
    let { label, link } = this.props;
     return(
-      <Link style={styles.navLink} to={link}>
-        <button style={styles.navButton}
-          className="bpn-nav__button">{ label }</button>
-      </Link>
+      <Link className="bpn-nav__link"
+        style={styles.navLink}
+        to={link}>{ label }</Link>
     )
   }
 }

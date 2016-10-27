@@ -34,7 +34,7 @@ class Layout extends Component {
             }
           />
         </div>
-        <div style={styles.content} className="bpn-content">
+        <div style={styles.content} className="bpn-layout__content">
           {/* Page */}
           {this.props.children}
         </div>
