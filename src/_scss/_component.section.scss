@@ -1,0 +1,26 @@
+.bpn-section{
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.bpn-section__title {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+}
+.bpn-section__title-button{
+  position: fixed;
+  top: 33px;
+  right: 20px;
+}
+
+.bpn-section__content {
+  flex: 1 0 auto;
+  display: flex;
+  padding: 110px 20px 20px;
+}

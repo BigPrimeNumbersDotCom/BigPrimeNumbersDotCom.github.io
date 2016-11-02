@@ -27657,10 +27657,11 @@
 	      var label = _props.label;
 	      var link = _props.link;
 
+	      var isActive = this.context.router.isActive(this.props.link, true),
+	          className = isActive ? "bpn-nav__link--active" : "";
 	      return _react2.default.createElement(
 	        _reactRouter.Link,
-	        { className: 'bpn-nav__link',
-	          style: _styles2.default.navLink,
+	        { className: 'bpn-nav__link ' + className,
 	          to: link },
 	        label
 	      );
@@ -27673,6 +27674,10 @@
 	MenuItem.propTypes = {
 	  label: _react.PropTypes.string.isRequired,
 	  link: _react.PropTypes.string.isRequired
+	};
+
+	MenuItem.contextTypes = {
+	  router: _react2.default.PropTypes.object
 	};
 
 	// TODO rename this to drawer.js
@@ -27810,7 +27815,7 @@
 	  },
 	  drawer: {
 	    width: '140px',
-	    position: 'absolute',
+	    position: 'fixed',
 	    zIndex: '100',
 	    height: '100%',
 	    boxSizing: 'border-box'
@@ -28001,9 +28006,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _drawer = __webpack_require__(256);
+
+	var _drawer2 = _interopRequireDefault(_drawer);
+
 	var _styles = __webpack_require__(243);
 
 	var _styles2 = _interopRequireDefault(_styles);
+
+	var _Title = __webpack_require__(254);
+
+	var _Title2 = _interopRequireDefault(_Title);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28031,7 +28044,8 @@
 
 	      return _react2.default.createElement(
 	        'button',
-	        { style: _styles2.default.button, onClick: onClick, className: 'bpn-button--outline' },
+	        { onClick: onClick,
+	          className: 'bpn-button bpn-button--outline' },
 	        label
 	      );
 	    }
@@ -28040,54 +28054,41 @@
 	  return Button;
 	}(_react.Component);
 
-	var Title = function (_Component2) {
-	  _inherits(Title, _Component2);
+	var Work = function (_Component2) {
+	  _inherits(Work, _Component2);
 
-	  function Title() {
-	    _classCallCheck(this, Title);
-
-	    return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
-	  }
-
-	  _createClass(Title, [{
-	    key: 'render',
-	    value: function render() {
-	      var title = this.props.title;
-
-	      return _react2.default.createElement(
-	        'h2',
-	        { style: _styles2.default.h2, className: 'bpn-title' },
-	        title
-	      );
-	    }
-	  }]);
-
-	  return Title;
-	}(_react.Component);
-
-	var Work = function (_Component3) {
-	  _inherits(Work, _Component3);
-
-	  function Work() {
+	  function Work(props) {
 	    _classCallCheck(this, Work);
 
-	    return _possibleConstructorReturn(this, (Work.__proto__ || Object.getPrototypeOf(Work)).apply(this, arguments));
+	    var _this2 = _possibleConstructorReturn(this, (Work.__proto__ || Object.getPrototypeOf(Work)).call(this, props));
+
+	    _this2.state = { show: false };
+	    return _this2;
 	  }
 
 	  _createClass(Work, [{
+	    key: 'toggle',
+	    value: function toggle() {
+	      var show = this.state.show;
+	      this.setState({ show: !show });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        { style: _styles2.default.section.container, className: 'bpn-section' },
+	        _react2.default.createElement(_drawer2.default, { show: this.state.show }),
 	        _react2.default.createElement(
 	          'div',
 	          { style: _styles2.default.section.title, className: 'bpn-section__title' },
-	          _react2.default.createElement(Title, { title: 'Man, Developer, Innovator' })
+	          _react2.default.createElement(_Title2.default, { title: 'Man, Developer, Innovator' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { style: _styles2.default.section.content, className: 'bpn-section__content bpn-work' },
+	          { className: 'bpn-section__content bpn-work' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'bpn-work__col bpn-work__col-main' },
@@ -28157,8 +28158,8 @@
 	                'div',
 	                { className: 'bpn-work__section-paragraph bpn-work__section-paragraph--no-header' },
 	                _react2.default.createElement(
-	                  'div',
-	                  null,
+	                  'button',
+	                  { className: 'bpn-button bpn-button--outline' },
 	                  'Download CV'
 	                )
 	              )
@@ -28205,7 +28206,7 @@
 	          'div',
 	          { style: _styles2.default.fixed.topRight, className: 'bpn-section__button' },
 	          _react2.default.createElement(Button, { label: 'Connect', onClick: function onClick() {
-	              console.log('button clicked');
+	              return _this3.toggle();
 	            } })
 	        )
 	      );
@@ -28292,6 +28293,14 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Title = __webpack_require__(254);
+
+	var _Title2 = _interopRequireDefault(_Title);
+
+	var _Button = __webpack_require__(257);
+
+	var _Button2 = _interopRequireDefault(_Button);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28300,8 +28309,71 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Projects = function (_Component) {
-	  _inherits(Projects, _Component);
+	var ProjectCard = function (_Component) {
+	  _inherits(ProjectCard, _Component);
+
+	  function ProjectCard() {
+	    _classCallCheck(this, ProjectCard);
+
+	    return _possibleConstructorReturn(this, (ProjectCard.__proto__ || Object.getPrototypeOf(ProjectCard)).apply(this, arguments));
+	  }
+
+	  _createClass(ProjectCard, [{
+	    key: 'render',
+	    value: function render() {
+	      var imgSrc = void 0,
+	          postDate = void 0;
+	      var post = this.props.post;
+	      var title = post.title;
+	      var description = post.description;
+	      var date = post.date;
+	      var imgUrl = post.imgUrl;
+
+
+	      if (date) postDate = _react2.default.createElement(
+	        'div',
+	        { className: 'bpn-card__subtitle' },
+	        date
+	      );
+
+	      if (!imgUrl) imgSrc = 'images/projects/placeholder.png';else imgSrc = imgUrl;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'bpn-card bpn-project__card' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bpn-card__content' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-card__banner' },
+	            _react2.default.createElement('img', { src: imgSrc, className: 'bpn-card__image' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-card__title-bar' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'bpn-card__title' },
+	              title
+	            ),
+	            postDate
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'bpn-card__description' },
+	            description
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ProjectCard;
+	}(_react.Component);
+
+	var Projects = function (_Component2) {
+	  _inherits(Projects, _Component2);
 
 	  function Projects() {
 	    _classCallCheck(this, Projects);
@@ -28310,12 +28382,101 @@
 	  }
 
 	  _createClass(Projects, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'toggle',
+	    value: function toggle() {
+	      console.log('view github');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        'Projects'
+	        { className: 'bpn-section' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bpn-section__title' },
+	          _react2.default.createElement(_Title2.default, { title: 'Projects, Experiments, Fun' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bpn-section__content bpn-projects' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-projects__row' },
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-projects__row' },
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-projects__row' },
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-projects__row' },
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } }),
+	            _react2.default.createElement(ProjectCard, { post: {
+	                title: 'Some Project',
+	                description: 'Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula.'
+	              } })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bpn-section__title-button' },
+	          _react2.default.createElement(_Button2.default, { label: 'Github', onClick: function onClick() {
+	              return _this3.toggle();
+	            } })
+	        )
 	      );
 	    }
 	  }]);
@@ -28390,6 +28551,14 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Title = __webpack_require__(254);
+
+	var _Title2 = _interopRequireDefault(_Title);
+
+	var _Button = __webpack_require__(257);
+
+	var _Button2 = _interopRequireDefault(_Button);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28398,8 +28567,69 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Blog = function (_Component) {
-	  _inherits(Blog, _Component);
+	var Card = function (_Component) {
+	  _inherits(Card, _Component);
+
+	  function Card() {
+	    _classCallCheck(this, Card);
+
+	    return _possibleConstructorReturn(this, (Card.__proto__ || Object.getPrototypeOf(Card)).apply(this, arguments));
+	  }
+
+	  _createClass(Card, [{
+	    key: 'render',
+	    value: function render() {
+	      var imgSrc = void 0,
+	          postDate = void 0;
+	      var post = this.props.post;
+	      var title = post.title;
+	      var description = post.description;
+	      var date = post.date;
+	      var imgUrl = post.imgUrl;
+
+	      if (date) postDate = _react2.default.createElement(
+	        'div',
+	        { className: 'bpn-card__subtitle' },
+	        date
+	      );
+	      if (!imgUrl) imgSrc = 'images/projects/placeholder.png';else imgSrc = imgUrl;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'bpn-card bpn-project__card' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bpn-card__content' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-card__banner' },
+	            _react2.default.createElement('img', { src: imgSrc, className: 'bpn-card__image' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-card__title-bar' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'bpn-card__title' },
+	              title
+	            ),
+	            postDate
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'bpn-card__description' },
+	            description
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Card;
+	}(_react.Component);
+
+	var Blog = function (_Component2) {
+	  _inherits(Blog, _Component2);
 
 	  function Blog() {
 	    _classCallCheck(this, Blog);
@@ -28408,12 +28638,25 @@
 	  }
 
 	  _createClass(Blog, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'toggle',
+	    value: function toggle() {
+	      console.log('view github');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        'Blog'
+	        { className: 'bpn-section' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bpn-section__title' },
+	          _react2.default.createElement(_Title2.default, { title: 'Stories, Knowlegde, Experience' })
+	        ),
+	        _react2.default.createElement('div', { className: 'bpn-section__content bpn-blog' })
 	      );
 	    }
 	  }]);
@@ -28471,6 +28714,277 @@
 	}(_react.Component);
 
 	exports.default = Story;
+
+/***/ },
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Title = function (_Component) {
+	  _inherits(Title, _Component);
+
+	  function Title(props) {
+	    _classCallCheck(this, Title);
+
+	    return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).call(this, props));
+	  }
+
+	  _createClass(Title, [{
+	    key: 'render',
+	    value: function render() {
+	      var title = this.props.title;
+
+	      return _react2.default.createElement(
+	        'h2',
+	        { className: 'bpn-title' },
+	        title
+	      );
+	    }
+	  }]);
+
+	  return Title;
+	}(_react.Component);
+
+	exports.default = Title;
+
+/***/ },
+/* 255 */,
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Title = __webpack_require__(254);
+
+	var _Title2 = _interopRequireDefault(_Title);
+
+	var _Button = __webpack_require__(257);
+
+	var _Button2 = _interopRequireDefault(_Button);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// Remove on focus blue.
+	// add on active styling
+
+	var TextField = function (_Component) {
+	  _inherits(TextField, _Component);
+
+	  function TextField() {
+	    _classCallCheck(this, TextField);
+
+	    return _possibleConstructorReturn(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).apply(this, arguments));
+	  }
+
+	  _createClass(TextField, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var name = _props.name;
+	      var placeholder = _props.placeholder;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'bpn-form__text-field' },
+	        _react2.default.createElement('input', { className: 'bpn-form__input',
+	          name: name, type: 'text',
+	          placeholder: placeholder })
+	      );
+	    }
+	  }]);
+
+	  return TextField;
+	}(_react.Component);
+
+	var TextArea = function (_Component2) {
+	  _inherits(TextArea, _Component2);
+
+	  function TextArea() {
+	    _classCallCheck(this, TextArea);
+
+	    return _possibleConstructorReturn(this, (TextArea.__proto__ || Object.getPrototypeOf(TextArea)).apply(this, arguments));
+	  }
+
+	  _createClass(TextArea, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props2 = this.props;
+	      var name = _props2.name;
+	      var placeholder = _props2.placeholder;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'bpn-form__text-field' },
+	        _react2.default.createElement('textarea', { className: 'bpn-forn__textarea',
+	          name: name, placeholder: placeholder })
+	      );
+	    }
+	  }]);
+
+	  return TextArea;
+	}(_react.Component);
+
+	var Drawer = function (_Component3) {
+	  _inherits(Drawer, _Component3);
+
+	  function Drawer(props) {
+	    _classCallCheck(this, Drawer);
+
+	    var _this3 = _possibleConstructorReturn(this, (Drawer.__proto__ || Object.getPrototypeOf(Drawer)).call(this, props));
+
+	    var _this3$props$show = _this3.props.show;
+	    var show = _this3$props$show === undefined ? false : _this3$props$show;
+
+	    _this3.state = { show: show };
+	    return _this3;
+	  }
+
+	  _createClass(Drawer, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(props) {
+	      var show = props.show;
+
+	      this.setState({ show: show });
+	    }
+	  }, {
+	    key: 'classNames',
+	    value: function classNames() {
+	      var css = '';
+	      if (!this.state.show) css = "bpn-drawer--hidden";
+	      return 'bpn-drawer\n    bpn-drawer--right\n    ' + css;
+	    }
+	  }, {
+	    key: 'send',
+	    value: function send() {
+	      console.log(this);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this4 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: this.classNames() },
+	        _react2.default.createElement(_Title2.default, { title: 'Get In Touch' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bpn-drawer__content bpn-drawer__form' },
+	          _react2.default.createElement(TextField, { name: 'Name', placeholder: 'Name' }),
+	          _react2.default.createElement(TextField, { name: 'Tel', placeholder: 'Tel' }),
+	          _react2.default.createElement(TextField, { name: 'Email', placeholder: 'Email' }),
+	          _react2.default.createElement(TextArea, { name: 'message', placeholder: 'A few words from youreself...' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bpn-drawer__content--bottom' },
+	            _react2.default.createElement(_Button2.default, { label: 'Send', onClick: function onClick() {
+	                return _this4.send();
+	              } })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Drawer;
+	}(_react.Component);
+
+	exports.default = Drawer;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Button = function (_Component) {
+	  _inherits(Button, _Component);
+
+	  function Button() {
+	    _classCallCheck(this, Button);
+
+	    return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+	  }
+
+	  _createClass(Button, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var label = _props.label;
+	      var onClick = _props.onClick;
+
+	      return _react2.default.createElement(
+	        'button',
+	        { onClick: onClick,
+	          className: 'bpn-button bpn-button--outline' },
+	        label
+	      );
+	    }
+	  }]);
+
+	  return Button;
+	}(_react.Component);
+
+	exports.default = Button;
 
 /***/ }
 /******/ ]);

@@ -1,0 +1,20 @@
+.bpn-projects{
+  flex-direction: column;
+}
+.bpn-projects__row{
+  display: flex;
+  margin-bottom: 20px;
+  padding: 0 2px;
+}
+
+.bpn-project__card{
+  width: 300px;
+  height: 340px;
+  margin-right: 20px;
+  box-sizing: content-box;
+
+  .bpn-card__image{
+    height: 160px;
+    width:100%;
+  }
+}

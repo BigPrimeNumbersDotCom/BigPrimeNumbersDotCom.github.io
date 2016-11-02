@@ -1,0 +1,15 @@
+.bpn-button {
+  max-height: 40px;
+  padding: 8px 10px;
+  font-family: Roboto;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #888888;
+
+  &.bpn-button--outline{
+    border: 1px solid #979797;
+    background: none;
+  }
+}

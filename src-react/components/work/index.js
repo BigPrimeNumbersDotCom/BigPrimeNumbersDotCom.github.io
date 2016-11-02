@@ -4,34 +4,40 @@
 'use strict';
 
 import React, { Component } from 'react';
+import Drawer from '../drawer'
 import styles from './styles'
+import Title from '../shared/Title'
+
 
 class Button extends Component {
   render(){
     let { label, onClick } = this.props;
     return(
-      <button style={styles.button} onClick={onClick} className="bpn-button--outline">{label}</button>
-    )
-  }
-}
-
-class Title extends Component {
-  render(){
-    let { title } = this.props;
-    return(
-      <h2 style={styles.h2} className="bpn-title">{title}</h2>
+      <button onClick={onClick}
+        className="bpn-button bpn-button--outline">{label}</button>
     )
   }
 }
 
 class Work extends Component {
+  constructor(props){
+    super(props);
+    this.state = { show: false };
+  }
+
+  toggle(){
+    let show = this.state.show;
+    this.setState({ show: !show });
+  }
+
   render() {
     return (
       <div style={styles.section.container} className="bpn-section">
+        <Drawer show={this.state.show} />
         <div style={styles.section.title} className="bpn-section__title">
           <Title title="Man, Developer, Innovator" />
         </div>
-        <div style={styles.section.content} className="bpn-section__content bpn-work">
+        <div className="bpn-section__content bpn-work">
           <div className="bpn-work__col bpn-work__col-main">
             <div className="bpn-work__section bpn-me">
               <h3 className="bpn-work__section-title">Me</h3>
@@ -54,7 +60,7 @@ class Work extends Component {
             </div>
             <div className="bpn-work__section-content">
               <div className="bpn-work__section-paragraph bpn-work__section-paragraph--no-header">
-                <div>Download CV</div>
+                <button className="bpn-button bpn-button--outline">Download CV</button>
               </div>
             </div>
           </div>
@@ -74,7 +80,7 @@ class Work extends Component {
           </div>
         </div>
         <div style={styles.fixed.topRight} className="bpn-section__button">
-          <Button label="Connect" onClick={()=>{console.log('button clicked')}} />
+          <Button label="Connect" onClick={()=>this.toggle()} />
         </div>
       </div>
     )

@@ -1,0 +1,19 @@
+.bpn-nav__link {
+  cursor: pointer;
+  border: 0;
+  text-align:left;
+  line-height: 24px;
+  font-size: 20px;
+  background: none;
+  font-family: 'Roboto';
+  letter-spacing: -0.43;
+  font-weight: 300;
+  color: #888888;
+  text-decoration: none;
+  display: block;
+  padding: 8px 20px;
+
+  &.bpn-nav__link--active{
+    font-weight: 500;
+  }
+}

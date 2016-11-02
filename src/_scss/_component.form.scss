@@ -1,0 +1,27 @@
+.bpn-form {}
+.bpn-form__text-field {
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  margin-bottom: 20px;
+}
+.bpn-form__input {
+  width: 100%;
+  border: 0;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0 0 10px 0;
+  font-family: 'Lato';
+}
+
+.bpn-forn__textarea {
+  width: 100%;
+  min-height: 96px;
+  max-height: calc(96px + 76px);
+  border: 0;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 8px 0;
+  font-family: 'Lato';
+  padding: 0 0 8px 0;
+  box-sizing: border-box;
+  resize: vertical;
+}

@@ -6,7 +6,7 @@ const styles = {
   },
   drawer: {
     width: '140px',
-    position: 'absolute',
+    position: 'fixed',
     zIndex: '100',
     height: '100%',
     boxSizing: 'border-box',

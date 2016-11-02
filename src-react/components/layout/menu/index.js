@@ -10,9 +10,10 @@ class MenuItem extends Component{
   }
   render(){
    let { label, link } = this.props;
+   let isActive = this.context.router.isActive(this.props.link, true),
+            className = isActive ? "bpn-nav__link--active" : "";
     return(
-      <Link className="bpn-nav__link"
-        style={styles.navLink}
+      <Link className={`bpn-nav__link ${className}`}
         to={link}>{ label }</Link>
     )
   }
@@ -21,6 +22,10 @@ class MenuItem extends Component{
 MenuItem.propTypes = {
  label: PropTypes.string.isRequired,
  link: PropTypes.string.isRequired,
+};
+
+MenuItem.contextTypes = {
+  router: React.PropTypes.object
 };
 
 // TODO rename this to drawer.js
