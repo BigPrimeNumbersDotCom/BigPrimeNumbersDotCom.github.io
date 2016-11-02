@@ -18,6 +18,7 @@ version: 1.0.0
 
 sass:
   sass_dir: _scss
+  style: compressed
 
 github:
   repo: github.com/bigprimenumbersdotcom/bigprimenumbersdotcom.github.io
