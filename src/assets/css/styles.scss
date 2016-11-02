@@ -1,4 +1,14 @@
 ---
 # for compile sakes
 ---
-@import 'base';
+@import "variables";
+@import "component.root";
+@import "component.title";
+@import "component.buttons";
+@import "component.section";
+@import "component.drawer";
+@import "component.form";
+@import "component.card";
+@import "component.nav";
+@import "page.work";
+@import "page.projects";
