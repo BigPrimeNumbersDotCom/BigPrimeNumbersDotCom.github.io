@@ -1,5 +1,5 @@
 
-source: src
+source: ./src
 
 # Setup
 title: Big Prime Numbers
@@ -16,7 +16,7 @@ author:
 version: 1.0.0
 
 sass:
-  sass_dir: _scss
+  sass_dir: ./src/_scss
   style: compressed
 
 github:
