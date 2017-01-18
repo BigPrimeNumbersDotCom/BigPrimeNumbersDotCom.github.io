@@ -6,16 +6,4 @@ a bodybuilder will take an exercise, e.g. Bench Press and alter their grip, hand
 what effects the new exercise motion will trigger.
 
 If it were not for these thought's then evolution of weight training or any disciple would ever advance. This is why my personal
-site is like a cluttered science lab. The sheer volume of tweaks in the web-dev scope is probably infinite - and I now defer you to R. Fynemen.
-
-
-## Experiments
---------------------
-
-### SAM Accounting Micro Service
-
-SAM/SAF Accounting is an experiment for event-driven microservices.
-SAM - Small and Medium
-SAF - Small and Freelancers
-Technologies included: Express, GraphQl, Relay, NodeJs, React, Docker, MongoDB, RabbitMQ, NGinx.
-Technologies To Be includes ElasticSearch, Logstash, Kibana, Neo4j.
+site is like a cluttered science lab. The sheer volume of tweaks in the web-dev scope is probably near infinite
