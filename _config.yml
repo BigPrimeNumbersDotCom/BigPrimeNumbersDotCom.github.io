@@ -4,8 +4,8 @@ source: ./src
 # Setup
 title: Big Prime Numbers
 tagline: 'Blogging, Coding, Design, Development'
-url: http://www.bigprimenumbers.com
-shorturl: bigprimenumbers.com
+#url: http://www.bigprimenumbers.com
+#shorturl: bigprimenumbers.com
 
 
 author:
